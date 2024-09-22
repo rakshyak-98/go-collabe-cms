@@ -3,7 +3,7 @@ package array
 import "fmt"
 
 /*
-Q: https://leetcode.com/problems/largest-subarray-length-k/
+Q: https://leetcode.com/problems/maximum-average-subarray-i/
 */
 
 func main() {
