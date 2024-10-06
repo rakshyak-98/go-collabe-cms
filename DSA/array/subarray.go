@@ -1,6 +1,9 @@
 package array
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 /*
 Q: https://leetcode.com/problems/maximum-average-subarray-i/
@@ -23,4 +26,25 @@ func main() {
 		}
 	}
 	fmt.Println(result)
+}
+
+/*
+Q: https://leetcode.com/problems/largest-subarray-length-k/
+ - Given an array of positive numbers and a positive number ‘k’ , find the maximum sum of any contiguous subarray of size ‘k’
+*/
+
+func maxSubArrayOfSizeK(arr []float64, K int) float64 {
+	var maxSum float64 = math.MinInt
+	var windowSum float64 = 0.0
+	var windowStart int = 0
+
+	for i := 0; i < len(arr); i += 1 {
+		windowSum += arr[i]
+		if i >= K-1 {
+			maxSum = math.Max(maxSum, windowSum)
+			windowSum -= arr[windowStart]
+			windowStart += 1
+		}
+	}
+	return maxSum
 }
